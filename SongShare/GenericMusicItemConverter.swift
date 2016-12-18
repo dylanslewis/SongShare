@@ -10,10 +10,10 @@ import Foundation
 
 class GenericMusicItemConverter {
     func musicItem(forGenericLink genericLink: URL) -> MusicItem? {
-        
+        return nil
     }
     
     func genericLink(for musicItem: MusicItem) -> URL? {
-        
+        return nil
     }
 }

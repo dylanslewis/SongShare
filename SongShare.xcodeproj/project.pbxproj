@@ -16,6 +16,8 @@
 		FC67662A1DFDA5B7005005F6 /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6766291DFDA5B7005005F6 /* MusicItem.swift */; };
 		FC9545201E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */; };
 		FC9545221E06292500DAA7C9 /* GenericMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */; };
+		FC9545241E06E7E100DAA7C9 /* AppleMusicMusicItemConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9545231E06E7E100DAA7C9 /* AppleMusicMusicItemConverterTests.swift */; };
+		FC9545261E071D5600DAA7C9 /* MusicItemConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9545251E071D5600DAA7C9 /* MusicItemConverterTests.swift */; };
 		FCADE2B31E0606A80023397E /* MusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B21E0606A80023397E /* MusicItemConverter.swift */; };
 		FCADE2B51E0606EF0023397E /* SpotifyMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */; };
 		FCADE2B71E06071B0023397E /* String+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B61E06071B0023397E /* String+Extra.swift */; };
@@ -55,6 +57,8 @@
 		FC6766291DFDA5B7005005F6 /* MusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicItem.swift; path = Model/MusicItem.swift; sourceTree = "<group>"; };
 		FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicItemConverterTests.swift; sourceTree = "<group>"; };
 		FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMusicItemConverter.swift; sourceTree = "<group>"; };
+		FC9545231E06E7E100DAA7C9 /* AppleMusicMusicItemConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicMusicItemConverterTests.swift; sourceTree = "<group>"; };
+		FC9545251E071D5600DAA7C9 /* MusicItemConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItemConverterTests.swift; sourceTree = "<group>"; };
 		FCADE2B21E0606A80023397E /* MusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItemConverter.swift; sourceTree = "<group>"; };
 		FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicItemConverter.swift; sourceTree = "<group>"; };
 		FCADE2B61E06071B0023397E /* String+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extra.swift"; sourceTree = "<group>"; };
@@ -126,7 +130,7 @@
 		FC67660F1DFDA58F005005F6 /* SongShareTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */,
+				FC9545271E071FF800DAA7C9 /* Music Item Converter Tests */,
 				FC6766121DFDA590005005F6 /* Info.plist */,
 			);
 			path = SongShareTests;
@@ -139,6 +143,16 @@
 				FC67661D1DFDA590005005F6 /* Info.plist */,
 			);
 			path = SongShareUITests;
+			sourceTree = "<group>";
+		};
+		FC9545271E071FF800DAA7C9 /* Music Item Converter Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FC9545251E071D5600DAA7C9 /* MusicItemConverterTests.swift */,
+				FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */,
+				FC9545231E06E7E100DAA7C9 /* AppleMusicMusicItemConverterTests.swift */,
+			);
+			name = "Music Item Converter Tests";
 			sourceTree = "<group>";
 		};
 		FCADE2BA1E0609880023397E /* Music Item Converter */ = {
@@ -303,7 +317,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9545241E06E7E100DAA7C9 /* AppleMusicMusicItemConverterTests.swift in Sources */,
 				FC9545201E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift in Sources */,
+				FC9545261E071D5600DAA7C9 /* MusicItemConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

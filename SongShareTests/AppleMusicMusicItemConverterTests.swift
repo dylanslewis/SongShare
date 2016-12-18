@@ -1,5 +1,5 @@
 //
-//  SpotifyMusicItemConverterTests.swift
+//  AppleMusicMusicItemConverterTests.swift
 //  SongShare
 //
 //  Created by Dylan Lewis on 18/12/2016.
@@ -9,19 +9,19 @@
 import XCTest
 @testable import SongShare
 
-class SpotifyMusicItemConverterTests: MusicItemConverterTests {
+class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     // MARK: - Override
     
     override func setUp() {
         super.setUp()
-        converter = SpotifyMusicItemConverter()
+        converter = AppleMusicMusicItemConverter()
     }
     
     // MARK: - Share Link to Music Item Tests
     
-    func testSpotifyConverterConvertsTrackShareLinkToMusicItem() {
-        let trackShareLink = URL(string: "https://open.spotify.com/track/5yEPxDjbbzUzyauGtnmVEC")!
-        let expectedMusicItem = MusicItem(artists: ["The Verve"], album: "Urban Hymns", track: "Bitter Sweet Symphony", type: .track)
+    func testAppleMusicConverterConvertsTrackGBShortShareLinkToMusicItem() {
+        let trackShareLink = URL(string: "https://itun.es/gb/r-C1p?i=265670554")!
+        let expectedMusicItem = MusicItem(artists: ["A Tribe Called Quest"], album: "Midnight Marauders", track: "Award Tour", type: .track)
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -40,17 +40,16 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.album, expectedMusicItem.album)
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
-            
+
             completionExpectation.fulfill()
         })
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-    
-    func testSpotifyConverterConvertsTrackWithMultipleArtistsShareLinkToMusicItem() {
-        // FIXME: Add URL
-        let trackShareLink = URL(string: "www.apple.com")!
-        let expectedMusicItem = MusicItem(artists: ["The Verve"], album: "Urban Hymns", track: "Bitter Sweet Symphony", type: .track)
+
+    func testAppleMusicConverterConvertsTrackGBLongShareLinkToMusicItem() {
+        let trackShareLink = URL(string: "https://itunes.apple.com/gb/album/thiago-silva/id1113013332?uo=4")!
+        let expectedMusicItem = MusicItem(artists: ["Dave & AJ Tracey"], album: "Thiago Silva - Single", track: "Thiago Silva", type: .track)
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -69,15 +68,15 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.album, expectedMusicItem.album)
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
-            
+
             completionExpectation.fulfill()
         })
         
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testSpotifyConverterConvertsAlbumShareLinkToMusicItem() {
-        let albumShareLink = URL(string: "https://open.spotify.com/album/09fggMHib4YkOtwQNXEBII")!
+    func testAppleMusicConverterConvertsAlbumGBShortShareLinkToMusicItem() {
+        let albumShareLink = URL(string: "https://itun.es/gb/r-C1p")!
         let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: "Starboy", track: nil, type: .album)
         
         let completionExpectation = expectation(description: "Conversion completes")
@@ -97,14 +96,14 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.album, expectedMusicItem.album)
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
-            
+
             completionExpectation.fulfill()
         })
         
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testSpotifyConverterConvertsAlbumWithMultipleArtistsShareLinkToMusicItem() {
+    func testAppleMusicConverterConvertsAlbumGBLongShareLinkToMusicItem() {
         // FIXME: Add URL
         let albumShareLink = URL(string: "www.apple.com")!
         let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: "Starboy", track: nil, type: .album)
@@ -126,19 +125,20 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.album, expectedMusicItem.album)
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
-            
+
             completionExpectation.fulfill()
         })
         
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testSpotifyConverterConvertsArtistShareLinkToMusicItem() {
-        let artistShareLink = URL(string: "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ")!
+    func testAppleMusicConverterConvertsArtistGBShortShareLinkToMusicItem() {
+        // FIXME: Add URL
+        let artistShareLink = URL(string: "www.apple.com")!
         let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: nil, track: nil, type: .artist)
         
         let completionExpectation = expectation(description: "Conversion completes")
-
+        
         testConverter(convertsShareLink: artistShareLink, withCompletion: { (musicItem, error) in
             if let error = error {
                 XCTFail(error.localizedDescription)
@@ -154,7 +154,36 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.album, expectedMusicItem.album)
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
+
+            completionExpectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testAppleMusicConverterConvertsArtistGBLongShareLinkToMusicItem() {
+        // FIXME: Add URL
+        let artistShareLink = URL(string: "www.apple.com")!
+        let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: nil, track: nil, type: .artist)
+        
+        let completionExpectation = expectation(description: "Conversion completes")
+        
+        testConverter(convertsShareLink: artistShareLink, withCompletion: { (musicItem, error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
             
+            guard let musicItem = musicItem else {
+                XCTFail("Nil Music Item")
+                return
+            }
+            
+            XCTAssertEqual(musicItem.artists ?? [String](), expectedMusicItem.artists ?? [String]())
+            XCTAssertEqual(musicItem.album, expectedMusicItem.album)
+            XCTAssertEqual(musicItem.track, expectedMusicItem.track)
+            XCTAssertEqual(musicItem.type, expectedMusicItem.type)
+
             completionExpectation.fulfill()
         })
         
@@ -163,12 +192,13 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
     
     // MARK: - Music Item to Share Link Tests
     
-    func testSpotifyConverterConvertsTrackMusicItemToShareLink() {
+    func testAppleMusicConverterConvertsTrackMusicItemToShareLink() {
+        // FIXME: Add URL
         let trackMusicItem = MusicItem(artists: ["The Verve"], album: "Urban Hymns", track: "Bitter Sweet Symphony", type: .track)
-        let expectedShareLink = URL(string: "https://open.spotify.com/track/5yEPxDjbbzUzyauGtnmVEC")!
+        let expectedShareLink = URL(string: "www.apple.com")!
         
         let completionExpectation = expectation(description: "Conversion completes")
-
+        
         testConverter(converts: trackMusicItem) { (shareLink, error) in
             if let error = error {
                 XCTFail(error.localizedDescription)
@@ -178,13 +208,14 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(shareLink, expectedShareLink)
             completionExpectation.fulfill()
         }
-
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testSpotifyConverterConvertsAlbumMusicItemToShareLink() {
+    func testAppleMusicConverterConvertsAlbumMusicItemToShareLink() {
+        // FIXME: Add URL
         let albumMusicItem = MusicItem(artists: ["The Weeknd"], album: "Starboy", track: nil, type: .album)
-        let expectedShareLink = URL(string: "https://open.spotify.com/album/09fggMHib4YkOtwQNXEBII")!
+        let expectedShareLink = URL(string: "www.apple.com")!
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -201,9 +232,10 @@ class SpotifyMusicItemConverterTests: MusicItemConverterTests {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testSpotifyConverterConvertsArtistMusicItemToShareLink() {
+    func testAppleMusicConverterConvertsArtistMusicItemToShareLink() {
+        // FIXME: Add URL
         let artistMusicItem = MusicItem(artists: ["The Weeknd"], album: nil, track: nil, type: .artist)
-        let expectedShareLink = URL(string: "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ")!
+        let expectedShareLink = URL(string: "www.apple.com")!
         
         let completionExpectation = expectation(description: "Conversion completes")
         
