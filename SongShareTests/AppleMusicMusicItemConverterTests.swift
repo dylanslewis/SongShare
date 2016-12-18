@@ -76,7 +76,6 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     }
     
     func testAppleMusicConverterConvertsTrackGBLongShareLinkWithExtensionToMusicItem() {
-        // FIXME: Add URL
         let trackShareLink = URL(string: "https://geo.itunes.apple.com/gb/album/thiago-silva/id1113013332?i=1113013670&mt=1&app=music")!
         let expectedMusicItem = MusicItem(artists: ["Dave & AJ Tracey"], album: "Thiago SIlva - Single", track: "Thiago Silva", type: .track)
         
@@ -106,7 +105,7 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     
     func testAppleMusicConverterConvertsAlbumGBShortShareLinkToMusicItem() {
         let albumShareLink = URL(string: "https://itun.es/gb/r-C1p")!
-        let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: "Starboy", track: nil, type: .album)
+        let expectedMusicItem = MusicItem(artists: ["A Tribe Called Quest"], album: "Midnight Marauders", track: nil, type: .album)
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -133,9 +132,8 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     }
     
     func testAppleMusicConverterConvertsAlbumGBLongShareLinkToMusicItem() {
-        // FIXME: Add URL
-        let albumShareLink = URL(string: "www.apple.com")!
-        let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: "Starboy", track: nil, type: .album)
+        let albumShareLink = URL(string: "https://itunes.apple.com/gb/album/midnight-marauders/id265670545?uo=4")!
+        let expectedMusicItem = MusicItem(artists: ["A Tribe Called Quest"], album: "Midnight Marauders", track: nil, type: .album)
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -191,9 +189,8 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     }
     
     func testAppleMusicConverterConvertsArtistGBLongShareLinkToMusicItem() {
-        // FIXME: Add URL
-        let artistShareLink = URL(string: "www.apple.com")!
-        let expectedMusicItem = MusicItem(artists: ["The Weeknd"], album: nil, track: nil, type: .artist)
+        let artistShareLink = URL(string: "https://itunes.apple.com/gb/artist/a-tribe-called-quest/id1587965?uo=4")!
+        let expectedMusicItem = MusicItem(artists: ["A Tribe Called Quest"], album: nil, track: nil, type: .artist)
         
         let completionExpectation = expectation(description: "Conversion completes")
         

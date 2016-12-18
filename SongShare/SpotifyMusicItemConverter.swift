@@ -38,8 +38,8 @@ class SpotifyMusicItemConverter: MusicItemConverter {
 
     // MARK: - ShareLinkToMusicItemConverter
     
-    func lookupLink(forShareLink shareLink: URL) -> URL? {
-        return shareLink
+    func lookupLink(forShareLink shareLink: URL, withCompletion completion: @escaping (URL?, Error?) -> Void) {
+        completion(shareLink, nil)
     }
     
     func musicItem(for data: Data) -> MusicItem? {

@@ -49,11 +49,14 @@ class AppleMusicMusicItemConverter: MusicItemConverter {
     
     // MARK: - ShareLinkToMusicItemConverter
 
-    func lookupLink(forShareLink shareLink: URL) -> URL? {
-        guard let trackIdentifier = appleMusicTrackIdentifier(forAppleMusicShareLink: shareLink), let lookupURL = appleMusicLookupURL(forTrackIdentifier: trackIdentifier) else {
-            return nil
+    func lookupLink(forShareLink shareLink: URL, withCompletion completion: @escaping (URL?, Error?) -> Void) {
+        guard let lookupLink = lookupLink(forExpandedShareLink: shareLink) else {
+            // Make a request to the URL to get an expanded version containing
+            // an identifier.
+            getLookupLink(forCompactShareLink: shareLink, withCompletion: completion)
+            return
         }
-        return lookupURL
+        completion(lookupLink, nil)
     }
     
     func musicItem(for data: Data) -> MusicItem? {
@@ -79,18 +82,52 @@ class AppleMusicMusicItemConverter: MusicItemConverter {
         return URL(string: regionalShareLinkURL)
     }
     
-    private func appleMusicLookupURL(forTrackIdentifier trackIdentifier: String) -> URL? {
+    private func lookupLink(forExpandedShareLink shareLink: URL) -> URL? {
+        guard
+            let itemIdentifier = itemIdentifier(forShareLink: shareLink),
+            let lookupURL = lookupLink(forItemIdentifier: itemIdentifier) else {
+                return nil
+        }
+        return lookupURL
+    }
+    
+    private func getLookupLink(forCompactShareLink shareLink: URL, withCompletion completion: @escaping (URL?, Error?) -> Void) {
+        let session = URLSession.shared
+        session.dataTask(with: shareLink) { (data, urlResponse, error) in
+            guard let httpURLResponse = urlResponse as? HTTPURLResponse, error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            let headerFields = httpURLResponse.allHeaderFields
+            guard
+                let expandedShareLinkString = headerFields["x-apple-orig-url"] as? String,
+                let expandedShareLink = URL(string: expandedShareLinkString),
+                let lookupLink = self.lookupLink(forExpandedShareLink: expandedShareLink) else {
+                    // TODO: Create error
+                    completion(nil, error)
+                    return
+            }
+            
+            completion(lookupLink, nil)
+        }.resume()
+    }
+    
+    private func lookupLink(forItemIdentifier identifier: String) -> URL? {
         // TODO: Make regional, potentially extracting the region from the original string
-        var urlComponents = URLComponents(string: "https://itunes.apple.com/gb/lookup?id=\(trackIdentifier)")
-        let identifierItem = URLQueryItem(name: "id", value: trackIdentifier)
+        var urlComponents = URLComponents(string: "https://itunes.apple.com/gb/lookup")
+        let identifierItem = URLQueryItem(name: "id", value: identifier)
         urlComponents?.queryItems = [identifierItem]
         
         return urlComponents?.url
     }
     
-    private func appleMusicTrackIdentifier(forAppleMusicShareLink shareLink: URL) -> String? {
+    private func itemIdentifier(forShareLink shareLink: URL) -> String? {
         // First lookup the key 'i' query item because it specifies a track.
-        return shareLink.queryItemValue(forKey: "i") ?? shareLink.urlComponent(preceededByKey: "id")
+        let identifier = shareLink.queryItemValue(forKey: "i") ?? shareLink.urlComponent(preceededByKey: "id")
+        
+        let nonPermittedCharacterSet = CharacterSet.decimalDigits.inverted
+        return identifier?.rangeOfCharacter(from: nonPermittedCharacterSet) == nil ? identifier : nil
     }
     
     private func musicItem(forAppleMusicJSON json: [String: AnyObject]) -> MusicItem? {

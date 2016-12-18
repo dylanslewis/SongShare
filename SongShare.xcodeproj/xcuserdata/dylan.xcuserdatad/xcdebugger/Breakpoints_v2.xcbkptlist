@@ -19,13 +19,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SongShare/Model/MusicItem.swift"
-            timestampString = "503789792.644586"
+            filePath = "SongShare/MusicItemConverter.swift"
+            timestampString = "503792951.395252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "sanitizedQuery()"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "createMusicItem(forShareLink:withCompletion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SongShare/AppleMusicMusicItemConverter.swift"
+            timestampString = "503792986.917024"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "musicItem(forAppleMusicJSON:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

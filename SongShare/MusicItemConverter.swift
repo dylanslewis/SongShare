@@ -16,7 +16,7 @@ protocol MusicItemToShareLinkConverter {
 }
 
 protocol ShareLinkToMusicItemConverter {
-    func lookupLink(forShareLink shareLink: URL) -> URL?
+    func lookupLink(forShareLink shareLink: URL, withCompletion completion: @escaping (URL?, Error?) -> Void)
     func musicItem(for data: Data) -> MusicItem?
 }
 
@@ -54,19 +54,20 @@ extension MusicItemToShareLinkConverter {
 
 extension ShareLinkToMusicItemConverter {
     func createMusicItem(forShareLink shareLink: URL, withCompletion completion: @escaping (MusicItem?, Error?) -> Void) {
-        guard let lookupLink = self.lookupLink(forShareLink: shareLink) else {
-            // TODO: Create error
-            completion(nil, nil)
-            return
-        }
-        
-        let session = URLSession.shared
-        session.dataTask(with: lookupLink) { (data, urlResponse, error) in
-            guard let data = data, let musicItem = self.musicItem(for: data) else {
+        self.lookupLink(forShareLink: shareLink) { (lookupURL, error) in
+            guard let lookupURL = lookupURL, error == nil else {
                 completion(nil, error)
                 return
             }
-            completion(musicItem, error)
-        }.resume()
+            
+            let session = URLSession.shared
+            session.dataTask(with: lookupURL) { (data, urlResponse, error) in
+                guard let data = data, let musicItem = self.musicItem(for: data) else {
+                    completion(nil, error)
+                    return
+                }
+                completion(musicItem, error)
+            }.resume()
+        }
     }
 }
