@@ -9,14 +9,20 @@
 import Foundation
 
 extension String {
-    func sanitizedWords() -> [String] {
+    func sanitized() -> String {
         // TODO: Consider removing common words
-        var sanitizedString = self.replacingOccurrences(of: "(", with: "")
+        let lowercaseString = self.lowercased()
+        var sanitizedString = lowercaseString.replacingOccurrences(of: "(", with: "")
         sanitizedString = sanitizedString.replacingOccurrences(of: ")", with: "")
         sanitizedString = sanitizedString.replacingOccurrences(of: "- ", with: "")
         sanitizedString = sanitizedString.replacingOccurrences(of: ".", with: "")
         sanitizedString = sanitizedString.replacingOccurrences(of: "& ", with: "")
         sanitizedString = sanitizedString.replacingOccurrences(of: "feat ", with: "")
+        return sanitizedString
+    }
+    
+    func sanitizedWords() -> [String] {
+        let sanitizedString = self.sanitized()
         return sanitizedString.components(separatedBy: " ")
     }
 }

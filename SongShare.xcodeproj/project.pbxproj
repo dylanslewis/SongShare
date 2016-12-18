@@ -22,6 +22,7 @@
 		FCADE2B51E0606EF0023397E /* SpotifyMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */; };
 		FCADE2B71E06071B0023397E /* String+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B61E06071B0023397E /* String+Extra.swift */; };
 		FCADE2B91E0607330023397E /* AppleMusicMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B81E0607330023397E /* AppleMusicMusicItemConverter.swift */; };
+		FCE449DF1E073589007E660B /* Array+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE449DE1E073589007E660B /* Array+Extra.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicItemConverter.swift; sourceTree = "<group>"; };
 		FCADE2B61E06071B0023397E /* String+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extra.swift"; sourceTree = "<group>"; };
 		FCADE2B81E0607330023397E /* AppleMusicMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicMusicItemConverter.swift; sourceTree = "<group>"; };
+		FCE449DE1E073589007E660B /* Array+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extra.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				FC6765FD1DFDA58F005005F6 /* ViewController.swift */,
 				FC6766291DFDA5B7005005F6 /* MusicItem.swift */,
 				FCADE2B61E06071B0023397E /* String+Extra.swift */,
+				FCE449DE1E073589007E660B /* Array+Extra.swift */,
 				FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */,
 				FCADE2BA1E0609880023397E /* Music Item Converter */,
 				FC6765FF1DFDA58F005005F6 /* Main.storyboard */,
@@ -306,6 +309,7 @@
 				FCADE2B51E0606EF0023397E /* SpotifyMusicItemConverter.swift in Sources */,
 				FC6765FE1DFDA58F005005F6 /* ViewController.swift in Sources */,
 				FCADE2B71E06071B0023397E /* String+Extra.swift in Sources */,
+				FCE449DF1E073589007E660B /* Array+Extra.swift in Sources */,
 				FC6765FC1DFDA58F005005F6 /* AppDelegate.swift in Sources */,
 				FCADE2B31E0606A80023397E /* MusicItemConverter.swift in Sources */,
 				FCADE2B91E0607330023397E /* AppleMusicMusicItemConverter.swift in Sources */,

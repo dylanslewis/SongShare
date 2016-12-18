@@ -48,8 +48,8 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
     }
 
     func testAppleMusicConverterConvertsTrackGBLongShareLinkToMusicItem() {
-        let trackShareLink = URL(string: "https://itunes.apple.com/gb/album/thiago-silva/id1113013332?uo=4")!
-        let expectedMusicItem = MusicItem(artists: ["Dave & AJ Tracey"], album: "Thiago Silva - Single", track: "Thiago Silva", type: .track)
+        let trackShareLink = URL(string: "https://geo.itunes.apple.com/gb/album/thiago-silva/id1113013332?i=1113013670")!
+        let expectedMusicItem = MusicItem(artists: ["Dave & AJ Tracey"], album: "Thiago SIlva - Single", track: "Thiago Silva", type: .track)
         
         let completionExpectation = expectation(description: "Conversion completes")
         
@@ -69,6 +69,35 @@ class AppleMusicMusicItemConverterTests: MusicItemConverterTests {
             XCTAssertEqual(musicItem.track, expectedMusicItem.track)
             XCTAssertEqual(musicItem.type, expectedMusicItem.type)
 
+            completionExpectation.fulfill()
+        })
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testAppleMusicConverterConvertsTrackGBLongShareLinkWithExtensionToMusicItem() {
+        // FIXME: Add URL
+        let trackShareLink = URL(string: "https://geo.itunes.apple.com/gb/album/thiago-silva/id1113013332?i=1113013670&mt=1&app=music")!
+        let expectedMusicItem = MusicItem(artists: ["Dave & AJ Tracey"], album: "Thiago SIlva - Single", track: "Thiago Silva", type: .track)
+        
+        let completionExpectation = expectation(description: "Conversion completes")
+        
+        testConverter(convertsShareLink: trackShareLink, withCompletion: { (musicItem, error) in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            
+            guard let musicItem = musicItem else {
+                XCTFail("Nil Music Item")
+                return
+            }
+            
+            XCTAssertEqual(musicItem.artists ?? [String](), expectedMusicItem.artists ?? [String]())
+            XCTAssertEqual(musicItem.album, expectedMusicItem.album)
+            XCTAssertEqual(musicItem.track, expectedMusicItem.track)
+            XCTAssertEqual(musicItem.type, expectedMusicItem.type)
+            
             completionExpectation.fulfill()
         })
         

@@ -22,21 +22,59 @@ struct MusicItem {
 extension MusicItem {
     func sanitizedQuery() -> String {
         var queries = [String]()
-        if let artists = artists {
-            for artist in artists {
-                queries.append(contentsOf: artist.sanitizedWords())
-            }
+        
+        queries.appendIfNotNil(contentsOf: sanitizedArtistWords)
+        
+        if let sanitizedTrack = sanitizedTrack, sanitizedAlbum?.contains(sanitizedTrack) == true {
+            // Track name is contained in the album name, so omit it.
+            queries.appendIfNotNil(contentsOf: sanitizedTrackWords)
+        }
+        else {
+            queries.appendIfNotNil(contentsOf: sanitizedAlbumWords)
+            queries.appendIfNotNil(contentsOf: sanitizedTrackWords)
         }
         
-        //        if let album = musicItem.album {
-        //            let sanitizedAlbumWords = sanitizedWords(for: album)
-        //            queries.append(contentsOf: sanitizedAlbumWords)
-        //        }
-        
-        if let track = track {
-            // TODO: Do proper sanitization
-            queries.append(contentsOf: track.sanitizedWords())
-        }
         return queries.joined(separator: "+")
+    }
+    
+    private var sanitizedArtistWords: [String]? {
+        var sanitizedArtists = [String]()
+        guard let artists = self.artists else {
+            return nil
+        }
+        
+        for artist in artists {
+            sanitizedArtists.append(contentsOf: artist.sanitizedWords())
+        }
+        
+        return sanitizedArtists
+    }
+    
+    private var sanitizedAlbum: String? {
+        guard let album = self.album else {
+            return nil
+        }
+        return album.sanitized()
+    }
+    
+    private var sanitizedAlbumWords: [String]? {
+        guard let album = self.album else {
+            return nil
+        }
+        return album.sanitizedWords()
+    }
+    
+    private var sanitizedTrack: String? {
+        guard let track = self.track else {
+            return nil
+        }
+        return track.sanitized()
+    }
+    
+    private var sanitizedTrackWords: [String]? {
+        guard let track = self.track else {
+            return nil
+        }
+        return track.sanitizedWords()
     }
 }

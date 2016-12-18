@@ -8,6 +8,21 @@
 
 import Foundation
 
+private extension URL {
+    func queryItemValue(forKey key: String) -> String? {
+        let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: false)
+        return urlComponents?.queryItems?.filter({ $0.name == key }).first?.value
+    }
+    
+    func urlComponent(preceededByKey key: String) -> String? {
+        let urlSeparatedByIdentifier = absoluteString.components(separatedBy: key)
+        let identifierComponent = urlSeparatedByIdentifier.last
+        let identifierComponentSeparatedByQuestionMark = identifierComponent?.components(separatedBy: "?")
+        let urlComponent = identifierComponentSeparatedByQuestionMark?.first
+        return urlComponent
+    }
+}
+
 class AppleMusicMusicItemConverter: MusicItemConverter {
     // MARK: - MusicItemToShareLinkConverter
     
@@ -59,13 +74,14 @@ class AppleMusicMusicItemConverter: MusicItemConverter {
             return nil
         }
         
+        // TODO: Make regional
         let regionalShareLinkURL = shareLinkURL.replacingOccurrences(of: "/us", with: "/gb")
         return URL(string: regionalShareLinkURL)
     }
     
     private func appleMusicLookupURL(forTrackIdentifier trackIdentifier: String) -> URL? {
         // TODO: Make regional, potentially extracting the region from the original string
-        var urlComponents = URLComponents(string: "https://itunes.apple.com/gb/lookup?id=281757416")
+        var urlComponents = URLComponents(string: "https://itunes.apple.com/gb/lookup?id=\(trackIdentifier)")
         let identifierItem = URLQueryItem(name: "id", value: trackIdentifier)
         urlComponents?.queryItems = [identifierItem]
         
@@ -73,13 +89,15 @@ class AppleMusicMusicItemConverter: MusicItemConverter {
     }
     
     private func appleMusicTrackIdentifier(forAppleMusicShareLink shareLink: URL) -> String? {
-        let urlSeparatedByEquals = shareLink.absoluteString.components(separatedBy: "=")
-        let trackIdentifier = urlSeparatedByEquals.last
-        return trackIdentifier
+        // First lookup the key 'i' query item because it specifies a track.
+        return shareLink.queryItemValue(forKey: "i") ?? shareLink.urlComponent(preceededByKey: "id")
     }
     
     private func musicItem(forAppleMusicJSON json: [String: AnyObject]) -> MusicItem? {
-        guard let results = json["results"] as? [[String: AnyObject]], let result = results.first else {
+        guard
+            let results = json["results"] as? [[String: AnyObject]],
+            let result = results.first,
+            let type = musicItemType(forJSON: result) else {
             return nil
         }
         
@@ -91,7 +109,31 @@ class AppleMusicMusicItemConverter: MusicItemConverter {
             artists = [artistName]
         }
         
-        // TODO: Make dynamic types
-        return MusicItem(artists: artists, album: albumName, track: trackName, type: .track)
+        return MusicItem(artists: artists, album: albumName, track: trackName, type: type)
+    }
+    
+    private func musicItemType(forJSON json: [String: AnyObject]) -> MusicItemType? {
+        guard json["trackName"] == nil else {
+            return .track
+        }
+
+        guard let collectionType = json["collectionType"] as? String, let musicType = self.musicType(forValue: collectionType) else {
+            return nil
+        }
+        
+        return musicType
+    }
+    
+    private func musicType(forValue value: String) -> MusicItemType? {
+        switch value {
+        case "Track":
+            return .track
+        case "Album":
+            return .album
+        case "Artist":
+            return .artist
+        default:
+            return nil
+        }
     }
 }
