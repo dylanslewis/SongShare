@@ -12,11 +12,14 @@
 		FC6766011DFDA58F005005F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6765FF1DFDA58F005005F6 /* Main.storyboard */; };
 		FC6766031DFDA58F005005F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6766021DFDA58F005005F6 /* Assets.xcassets */; };
 		FC6766061DFDA58F005005F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6766041DFDA58F005005F6 /* LaunchScreen.storyboard */; };
-		FC6766111DFDA590005005F6 /* SongShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6766101DFDA590005005F6 /* SongShareTests.swift */; };
 		FC67661C1DFDA590005005F6 /* SongShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67661B1DFDA590005005F6 /* SongShareUITests.swift */; };
 		FC67662A1DFDA5B7005005F6 /* MusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6766291DFDA5B7005005F6 /* MusicItem.swift */; };
-		FC67662C1DFDA5F4005005F6 /* MusicItemToURLConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67662B1DFDA5F4005005F6 /* MusicItemToURLConverter.swift */; };
-		FC67662E1DFDA605005005F6 /* URLToMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67662D1DFDA605005005F6 /* URLToMusicItemConverter.swift */; };
+		FC9545201E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */; };
+		FC9545221E06292500DAA7C9 /* GenericMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */; };
+		FCADE2B31E0606A80023397E /* MusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B21E0606A80023397E /* MusicItemConverter.swift */; };
+		FCADE2B51E0606EF0023397E /* SpotifyMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */; };
+		FCADE2B71E06071B0023397E /* String+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B61E06071B0023397E /* String+Extra.swift */; };
+		FCADE2B91E0607330023397E /* AppleMusicMusicItemConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADE2B81E0607330023397E /* AppleMusicMusicItemConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +48,17 @@
 		FC6766051DFDA58F005005F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC6766071DFDA58F005005F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC67660C1DFDA58F005005F6 /* SongShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC6766101DFDA590005005F6 /* SongShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongShareTests.swift; sourceTree = "<group>"; };
 		FC6766121DFDA590005005F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC6766171DFDA590005005F6 /* SongShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC67661B1DFDA590005005F6 /* SongShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongShareUITests.swift; sourceTree = "<group>"; };
 		FC67661D1DFDA590005005F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC6766291DFDA5B7005005F6 /* MusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicItem.swift; path = Model/MusicItem.swift; sourceTree = "<group>"; };
-		FC67662B1DFDA5F4005005F6 /* MusicItemToURLConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItemToURLConverter.swift; sourceTree = "<group>"; };
-		FC67662D1DFDA605005005F6 /* URLToMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLToMusicItemConverter.swift; path = Model/URLToMusicItemConverter.swift; sourceTree = "<group>"; };
+		FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicItemConverterTests.swift; sourceTree = "<group>"; };
+		FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMusicItemConverter.swift; sourceTree = "<group>"; };
+		FCADE2B21E0606A80023397E /* MusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicItemConverter.swift; sourceTree = "<group>"; };
+		FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyMusicItemConverter.swift; sourceTree = "<group>"; };
+		FCADE2B61E06071B0023397E /* String+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extra.swift"; sourceTree = "<group>"; };
+		FCADE2B81E0607330023397E /* AppleMusicMusicItemConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicMusicItemConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +112,9 @@
 				FC6765FB1DFDA58F005005F6 /* AppDelegate.swift */,
 				FC6765FD1DFDA58F005005F6 /* ViewController.swift */,
 				FC6766291DFDA5B7005005F6 /* MusicItem.swift */,
-				FC67662B1DFDA5F4005005F6 /* MusicItemToURLConverter.swift */,
-				FC67662D1DFDA605005005F6 /* URLToMusicItemConverter.swift */,
+				FCADE2B61E06071B0023397E /* String+Extra.swift */,
+				FC9545211E06292500DAA7C9 /* GenericMusicItemConverter.swift */,
+				FCADE2BA1E0609880023397E /* Music Item Converter */,
 				FC6765FF1DFDA58F005005F6 /* Main.storyboard */,
 				FC6766021DFDA58F005005F6 /* Assets.xcassets */,
 				FC6766041DFDA58F005005F6 /* LaunchScreen.storyboard */,
@@ -119,7 +126,7 @@
 		FC67660F1DFDA58F005005F6 /* SongShareTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC6766101DFDA590005005F6 /* SongShareTests.swift */,
+				FC95451F1E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift */,
 				FC6766121DFDA590005005F6 /* Info.plist */,
 			);
 			path = SongShareTests;
@@ -132,6 +139,16 @@
 				FC67661D1DFDA590005005F6 /* Info.plist */,
 			);
 			path = SongShareUITests;
+			sourceTree = "<group>";
+		};
+		FCADE2BA1E0609880023397E /* Music Item Converter */ = {
+			isa = PBXGroup;
+			children = (
+				FCADE2B21E0606A80023397E /* MusicItemConverter.swift */,
+				FCADE2B41E0606EF0023397E /* SpotifyMusicItemConverter.swift */,
+				FCADE2B81E0607330023397E /* AppleMusicMusicItemConverter.swift */,
+			);
+			name = "Music Item Converter";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,10 +289,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC67662A1DFDA5B7005005F6 /* MusicItem.swift in Sources */,
+				FCADE2B51E0606EF0023397E /* SpotifyMusicItemConverter.swift in Sources */,
 				FC6765FE1DFDA58F005005F6 /* ViewController.swift in Sources */,
-				FC67662C1DFDA5F4005005F6 /* MusicItemToURLConverter.swift in Sources */,
-				FC67662E1DFDA605005005F6 /* URLToMusicItemConverter.swift in Sources */,
+				FCADE2B71E06071B0023397E /* String+Extra.swift in Sources */,
 				FC6765FC1DFDA58F005005F6 /* AppDelegate.swift in Sources */,
+				FCADE2B31E0606A80023397E /* MusicItemConverter.swift in Sources */,
+				FCADE2B91E0607330023397E /* AppleMusicMusicItemConverter.swift in Sources */,
+				FC9545221E06292500DAA7C9 /* GenericMusicItemConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6766111DFDA590005005F6 /* SongShareTests.swift in Sources */,
+				FC9545201E061BED00DAA7C9 /* SpotifyMusicItemConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
